@@ -13,7 +13,7 @@ This project was built to demonstrate hardware-software co-design, specifically 
 ## System Simulation & Verification
 The CPU was programmed with compiled machine code to initialize the PWM peripheral. As shown in the simulation waveform below, once the CPU writes the duty cycles (25%, 50%, 75%) to the hardware registers, the CPU halts (`eafffffe` branch loop), and the **hardware autonomous generates the center-aligned pulses**.
 
-![PWM Waveform Simulation](img/pwm_waveform.png)
+![PWM Waveform Simulation](img/pwm_waveform.jpg)
 *(Notice the perfectly center-aligned pyramid structure of `pwm_u`, `pwm_v`, and `pwm_w`, which is mandatory for FOC).*
 
 ## Software Integration (Assembly)
