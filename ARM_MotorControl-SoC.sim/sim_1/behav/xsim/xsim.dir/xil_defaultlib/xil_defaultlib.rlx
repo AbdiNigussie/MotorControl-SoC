@@ -1,0 +1,19 @@
+0.7
+2020.2
+May 22 2024
+19:03:11
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.sim/sim_1/behav/xsim/glbl.v,1708598507,verilog,,,,glbl,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sim_1/new/tb_Processor_System.v,1778162559,verilog,,,,tb_Processor_System,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/ALU.v,1778120849,verilog,,C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/ARM3.v,,ALU,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/ARM3.v,1778120849,verilog,,C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/CondLogic.v,,ARM,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/CondLogic.v,1778120849,verilog,,C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/Decoder.v,,CondLogic,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/Decoder.v,1778120849,verilog,,C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/Extend.v,,Decoder,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/Extend.v,1778120849,verilog,,C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/Hazard unit.v,,Extend,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/Hazard unit.v,1778120849,verilog,,C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/MCycle.v,,HazardUnit,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/MCycle.v,1778120849,verilog,,C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/PWM_Generator.v,,MCycle,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/PWM_Generator.v,1778143077,verilog,,C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/ProgramCounter.v,,PWM_Generator,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/ProgramCounter.v,1778120849,verilog,,C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/RegisterFile.v,,ProgramCounter,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/RegisterFile.v,1778120849,verilog,,C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/Shifter3.v,,RegisterFile,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/Shifter3.v,1778120849,verilog,,C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/Wrapper3.v,,Shifter,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/TOP_Nexys43.v,1778144401,verilog,,,,TOP,,,,,,,,
+C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/Wrapper3.v,1778161027,verilog,,C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sim_1/new/tb_Processor_System.v,,Wrapper,,,,,,,,

@@ -1,0 +1,31 @@
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/2024.1/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_Processor_System_behav xil_defaultlib.tb_Processor_System xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 24 for port 'InstrImm' [C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/ARM3.v:164]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/ARM3.v" Line 2. Module ARM doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/ALU.v" Line 5. Module ALU doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/ARM3.v" Line 2. Module ARM doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/Abdi/Desktop/ready cv/ARM_MotorControl-SoC/ARM_MotorControl-SoC.srcs/sources_1/new/ALU.v" Line 5. Module ALU doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.ProgramCounter
+Compiling module xil_defaultlib.Decoder
+Compiling module xil_defaultlib.RegisterFile
+Compiling module xil_defaultlib.Extend
+Compiling module xil_defaultlib.CondLogic
+Compiling module xil_defaultlib.Shifter
+Compiling module xil_defaultlib.ALU
+Compiling module xil_defaultlib.MCycle
+Compiling module xil_defaultlib.HazardUnit
+Compiling module xil_defaultlib.ARM
+Compiling module xil_defaultlib.PWM_Generator
+Compiling module xil_defaultlib.Wrapper
+Compiling module xil_defaultlib.tb_Processor_System
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_Processor_System_behav

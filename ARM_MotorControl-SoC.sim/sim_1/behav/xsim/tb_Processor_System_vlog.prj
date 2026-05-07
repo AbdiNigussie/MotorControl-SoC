@@ -1,0 +1,21 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../ARM_MotorControl-SoC.srcs/sources_1/new/ALU.v" \
+"../../../../ARM_MotorControl-SoC.srcs/sources_1/new/ARM3.v" \
+"../../../../ARM_MotorControl-SoC.srcs/sources_1/new/CondLogic.v" \
+"../../../../ARM_MotorControl-SoC.srcs/sources_1/new/Decoder.v" \
+"../../../../ARM_MotorControl-SoC.srcs/sources_1/new/Extend.v" \
+"../../../../ARM_MotorControl-SoC.srcs/sources_1/new/Hazard unit.v" \
+"../../../../ARM_MotorControl-SoC.srcs/sources_1/new/MCycle.v" \
+"../../../../ARM_MotorControl-SoC.srcs/sources_1/new/PWM_Generator.v" \
+"../../../../ARM_MotorControl-SoC.srcs/sources_1/new/ProgramCounter.v" \
+"../../../../ARM_MotorControl-SoC.srcs/sources_1/new/RegisterFile.v" \
+"../../../../ARM_MotorControl-SoC.srcs/sources_1/new/Shifter3.v" \
+"../../../../ARM_MotorControl-SoC.srcs/sources_1/new/Wrapper3.v" \
+"../../../../ARM_MotorControl-SoC.srcs/sim_1/new/tb_Processor_System.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
