@@ -20,6 +20,15 @@ By writing the target phase angle to memory address `0x00000B00`, the CPU trigge
 *(Simulation showing the CORDIC calculating Cos(45°) and Sin(45°), converging flawlessly to 46341 (0.7071 in Q16.16 format) in 16 cycles).*
 
 ## 3-Phase PWM Peripheral & Software Integration
+As shown in the simulation waveform below, once the CPU writes the duty cycles to the hardware registers, the CPU halts (eafffffe branch loop), and the hardware autonomously generates the center-aligned pulses.
+![alt text](img/pwm_waveform.png)
+
+(The perfectly center-aligned pyramid structure of pwm_u, pwm_v, and pwm_w, which is mandatory for FOC).
+
+## Upcoming Development (Roadmap)
+⏳ QEI Peripheral: Quadrature Encoder Interface for accurate rotor position and speed tracking.
+⏳ Hardware Clarke/Park Transform Blocks: Further hardware abstraction for the FOC algorithmic loop.
+
 The PWM hardware is controlled seamlessly via software. Here is the assembly used to configure the 3-phase PWM hardware:
 
 ```armasm
