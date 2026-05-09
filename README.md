@@ -21,9 +21,9 @@ By writing the target phase angle to memory address `0x00000B00`, the CPU trigge
 
 ## 3-Phase PWM Peripheral & Software Integration
 As shown in the simulation waveform below, once the CPU writes the duty cycles to the hardware registers, the CPU halts (eafffffe branch loop), and the hardware autonomously generates the center-aligned pulses.
-![alt text](img/pwm_waveform.png)
+![Center-Aligned PWM](img/pwm_waveform.jpg)
 
-(The perfectly center-aligned pyramid structure of pwm_u, pwm_v, and pwm_w, which is mandatory for FOC).
+*(The perfectly center-aligned pyramid structure of pwm_u, pwm_v, and pwm_w, which is mandatory for FOC).*
 
 ## Upcoming Development (Roadmap)
 ⏳ QEI Peripheral: Quadrature Encoder Interface for accurate rotor position and speed tracking.
