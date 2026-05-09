@@ -46,9 +46,9 @@ reg [31:0] INSTR_MEM		[0:127]; // instruction memory
 reg [31:0] DATA_CONST_MEM	[0:127]; // data (constant) memory
 reg [31:0] DATA_VAR_MEM     [0:127]; // data (variable) memory
 integer i;
-
+/*
 // ----------------------------------------------------------------
-// Data (Constant) Memory - Stores the values we want to use
+// Data (Constant) Memory - Stores the values we want to use - To test PWM
 // ----------------------------------------------------------------
 initial begin
     for(i = 0; i < 128; i = i+1) DATA_CONST_MEM[i] = 32'h0;
@@ -83,6 +83,43 @@ initial begin
     // 10. Halt
     INSTR_MEM[10] = 32'hEAFFFFFE; // B loop
 end
+*/
+
+// ----------------------------------------------------------------
+// Data (Constant) Memory - CORDIC Test Values
+// ----------------------------------------------------------------
+initial begin
+    for(i = 0; i < 128; i = i+1) DATA_CONST_MEM[i] = 32'h0;
+    
+    DATA_CONST_MEM[0] = 32'h00000B00; // CORDIC Base Address
+    DATA_CONST_MEM[1] = 32'h0000C910; // 45 Degrees in Q16.16 (51472)
+end
+
+// ----------------------------------------------------------------
+// Instruction Memory - ARM Machine Code to Test CORDIC
+// ----------------------------------------------------------------
+initial begin
+    // Fill memory with NOPs (No Operation: MOV R0, R0) to act as a delay
+    for(i = 0; i < 128; i = i+1) INSTR_MEM[i] = 32'hE1A00000; 
+    
+    // 1. Load values from Constant Memory
+    INSTR_MEM[0] = 32'hE3A01000; // MOV R1, #0
+    INSTR_MEM[1] = 32'hE5910000; // LDR R0, [R1, #0]  -> R0 = 0x00000B00
+    INSTR_MEM[2] = 32'hE5912004; // LDR R2,[R1, #4]  -> R2 = 0x0000C910 (45 deg)
+
+    // 2. Write to CORDIC (Trigger Hardware Math!)
+    INSTR_MEM[3] = 32'hE5802000; // STR R2, [R0, #0]  -> Write angle, start CORDIC
+    
+    // Indices 4 through 20 will automatically be NOPs, giving the 
+    // hardware exactly 16 clock cycles to do the calculation.
+
+    // 3. Read the answers back into the CPU!
+    INSTR_MEM[22] = 32'hE5904004; // LDR R4, [R0, #4]  -> Read Cosine into R4
+    INSTR_MEM[23] = 32'hE5905008; // LDR R5, [R0, #8]  -> Read Sine into R5
+    
+    // 4. Halt
+    INSTR_MEM[24] = 32'hEAFFFFFE; // B loop
+end
 // ----------------------------------------------------------------
 // Data (Variable) Memory - Stores the value pointed to by R5
 // ----------------------------------------------------------------
@@ -110,7 +147,7 @@ ARM ARM1(
 //----------------------------------------------------------------
 // Motor Control PWM Peripheral
 //----------------------------------------------------------------
-wire dec_PWM; 
+wire dec_PWM, dec_CORDIC; 
 
 wire pwm_u_out, pwm_v_out, pwm_w_out;
 
@@ -125,17 +162,34 @@ PWM_Generator motor_pwm (
     .pwm_w(pwm_w)             // CHANGED: Connect directly to the output port
 );
 //----------------------------------------------------------------
+// FOC Math Coprocessor (CORDIC)
+//----------------------------------------------------------------
+CORDIC_Accelerator foc_math (
+    .clk(CLK),
+    .reset(RESET),
+    .we(MemWrite && dec_CORDIC), // Only write if mapped to B00
+    .addr(ALUResult),
+    .wdata(WriteData),
+    .rdata(cordic_rdata)         // Routes Sine/Cos to Read Mux
+);
+//----------------------------------------------------------------
 // Data memory address decoding
 //----------------------------------------------------------------
+
+
+// PWM
+
 assign dec_DATA_CONST = (ALUResult < 32'h00000200) ? 1'b1 : 1'b0;
 assign dec_DATA_VAR			= (ALUResult >= 32'h00000200 && ALUResult <= 32'h000009FC) ? 1'b1 : 1'b0;
 
-
-// NEW: Assign PWM registers to address space 0x00000A00 to 0x00000A0C
-
+// PWM: Assign PWM registers to address space 0x00000A00 to 0x00000A0C
 assign dec_PWM = (ALUResult >= 32'h00000A00 && ALUResult <= 32'h00000A0C) ? 1'b1 : 1'b0;
 
 
+// NEW: Assign CORDIC to address space 0x00000B00 to 0x00000B08
+assign dec_CORDIC     = (ALUResult >= 32'h00000B00 && ALUResult <= 32'h00000B08) ? 1'b1 : 1'b0;
+
+wire [31:0] cordic_rdata; // Wire to catch data from CORDIC
 
 //----------------------------------------------------------------
 // Data memory read 1
@@ -145,6 +199,8 @@ if (dec_DATA_VAR)
 	ReadData <= DATA_VAR_MEM[ALUResult[8:2]] ; 
 else if (dec_DATA_CONST)
 	ReadData <= DATA_CONST_MEM[ALUResult[8:2]] ; 	
+else if (dec_CORDIC)
+        ReadData <= cordic_rdata; // NEW: Route CORDIC data back to CPU
 else
 	ReadData <= 32'h0 ; 
 end

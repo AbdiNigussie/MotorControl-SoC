@@ -30,3 +30,11 @@ STR R3, [R0, #4]      // Write Phase U
 STR R4,[R0, #8]      // Write Phase V
 STR R5, [R0, #12]     // Write Phase W
 // CPU is now free to calculate other algorithms!
+
+## Hardware CORDIC Accelerator (FOC Math)
+In Field-Oriented Control (FOC), calculating Sine and Cosine transformations in software wastes hundreds of clock cycles. To optimize this, I designed a 16-stage iterative **CORDIC coprocessor** using Q16.16 fixed-point arithmetic. 
+
+By writing the target phase angle to memory address `0x00000B00`, the CPU triggers the accelerator. As seen in the waveform below, the CORDIC computes both `Cos` (X) and `Sin` (Y) concurrently in exactly 16 clock cycles without multipliers. The ARM processor then reads the results back via MMIO.
+
+![CORDIC Waveform Simulation](img/cordic_waveform.png)
+*(Simulation showing the CORDIC calculating Cos(45) and Sin(45), converging flawlessly to 0.7071 in Q16.16 format in 16 cycles).*
